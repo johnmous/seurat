@@ -2471,9 +2471,10 @@ DimPlot <- function(
   )
   dim.codes <- paste0(dim.code, c(dim.1, dim.2))
   data.plot <- as.data.frame(x = embeddings.use)
+  data.plot$cell.ident <- rownames(data.plot)
   # data.plot <- as.data.frame(GetDimReduction(object, reduction.type = reduction.use, slot = ""))
   cells.use <- intersect(x = cells.use, y = rownames(x = data.plot))
-  data.plot <- data.plot[cells.use, dim.codes]
+  data.plot <- data.plot[cells.use, c(dim.codes, "cell.ident")]
   ident.use <- as.factor(x = object@ident[cells.use])
   if (group.by != "ident") {
     ident.use <- as.factor(x = FetchData(
