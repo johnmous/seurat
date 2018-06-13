@@ -2559,7 +2559,7 @@ DimPlot <- function(
     data.plot$ident <- factor(x = data.plot$ident, levels = plot.order)
     data.plot <- data.plot[order(data.plot$ident), ]
   }
-  p <- ggplot(data = data.plot, mapping = aes(x = x, y = y)) +
+  p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
     geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
   if (!is.null(x = pt.shape)) {
     shape.val <- FetchData(object = object, vars.all = pt.shape)[cells.use, 1]
