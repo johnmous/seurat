@@ -2486,6 +2486,10 @@ DimPlot <- function(
   data.plot$x <- data.plot[, dim.codes[1]]
   data.plot$y <- data.plot[, dim.codes[2]]
   data.plot$pt.size <- pt.size
+
+  ## debug print
+  print(head(data.plot)) 
+  
   if (!is.null(x = cells.highlight)) {
     # Ensure that cells.highlight are in our data.frame
     if (is.character(x = cells.highlight)) {
