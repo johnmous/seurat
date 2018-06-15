@@ -2566,11 +2566,7 @@ DimPlot <- function(
   p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
     geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
   
-  ## debug code
-  print(head(data.plot))
-  str(p)
-  
-  
+
     if (!is.null(x = pt.shape)) {
     shape.val <- FetchData(object = object, vars.all = pt.shape)[cells.use, 1]
     if (is.numeric(shape.val)) {
@@ -2603,6 +2599,12 @@ DimPlot <- function(
     no.legend.title +
     theme_bw() +
     NoGrid()
+  
+  ## debug code
+  print(head(data.plot))
+  str(p3)
+  
+  
   if (dark.theme) {
     p <- p + DarkTheme()
     p3 <- p3 + DarkTheme()
