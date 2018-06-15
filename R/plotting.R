@@ -2600,9 +2600,7 @@ DimPlot <- function(
     theme_bw() +
     NoGrid()
   
-  ## debug code
-  print(head(data.plot))
-  str(p3)
+
   
   
   if (dark.theme) {
@@ -2621,6 +2619,11 @@ DimPlot <- function(
       geom_point(data = centers, mapping = aes(x = x, y = y, key = cell.ident), size = 0, alpha = 0) +
       geom_text(data = centers, mapping = aes(label = ident), size = label.size)
   }
+  
+  ## debug code
+  print(head(data.plot))
+  str(p3)
+  
   if (no.legend) {
     p3 <- p3 + theme(legend.position = "none")
   }
