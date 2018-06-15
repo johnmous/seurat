@@ -2679,9 +2679,7 @@ DimPlot <- function(
   }
 }
 
-## debug code
-print(head(data.plot))
-str(p3)
+
 
 #' Plot PCA map
 #'
