@@ -2620,11 +2620,6 @@ DimPlot <- function(
       geom_text(data = centers, mapping = aes(label = ident), size = label.size)
   }
   
-  ## debug code
-  print(head(data.plot))
-  str(p3)
-  
-  
   if (no.legend) {
     p3 <- p3 + theme(legend.position = "none")
   }
@@ -2683,6 +2678,10 @@ DimPlot <- function(
     print(p3)
   }
 }
+
+## debug code
+print(head(data.plot))
+str(p3)
 
 #' Plot PCA map
 #'
