@@ -2487,8 +2487,6 @@ DimPlot <- function(
   data.plot$y <- data.plot[, dim.codes[2]]
   data.plot$pt.size <- pt.size
 
-  ## debug print
-  print(head(data.plot)) 
   
   if (!is.null(x = cells.highlight)) {
     # Ensure that cells.highlight are in our data.frame
@@ -2563,6 +2561,11 @@ DimPlot <- function(
     data.plot$ident <- factor(x = data.plot$ident, levels = plot.order)
     data.plot <- data.plot[order(data.plot$ident), ]
   }
+  
+  ## debug code
+  print(head(data.plot))
+  str(p)
+  
   p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
     geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
   if (!is.null(x = pt.shape)) {
