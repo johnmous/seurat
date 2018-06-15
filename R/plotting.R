@@ -2562,13 +2562,16 @@ DimPlot <- function(
     data.plot <- data.plot[order(data.plot$ident), ]
   }
   
+
+  p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
+    geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
+  
   ## debug code
   print(head(data.plot))
   str(p)
   
-  p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
-    geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
-  if (!is.null(x = pt.shape)) {
+  
+    if (!is.null(x = pt.shape)) {
     shape.val <- FetchData(object = object, vars.all = pt.shape)[cells.use, 1]
     if (is.numeric(shape.val)) {
       shape.val <- cut(x = shape.val, breaks = 5)
