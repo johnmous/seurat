@@ -2624,6 +2624,7 @@ DimPlot <- function(
   print(head(data.plot))
   str(p3)
   
+  
   if (no.legend) {
     p3 <- p3 + theme(legend.position = "none")
   }
