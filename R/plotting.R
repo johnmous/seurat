@@ -2347,6 +2347,7 @@ globalVariables(names = c('x', 'y', 'ident'), package = 'Seurat', add = TRUE)
 #' @param dim.1 Dimension for x-axis (default 1)
 #' @param dim.2 Dimension for y-axis (default 2)
 #' @param cells.use Vector of cells to plot (default is all cells)
+#' @param cell.id include the cell id to be used in intersctive plots (default: FALSE)
 #' @param pt.size Adjust point size for plotting
 #' @param do.return Return a ggplot2 object (default : FALSE)
 #' @param do.bare Do only minimal formatting (default : FALSE)
@@ -2401,6 +2402,7 @@ DimPlot <- function(
   dim.1 = 1,
   dim.2 = 2,
   cells.use = NULL,
+  cell.id = FALSE,
   pt.size = 1,
   do.return = FALSE,
   do.bare = FALSE,
@@ -2562,11 +2564,15 @@ DimPlot <- function(
     data.plot <- data.plot[order(data.plot$ident), ]
   }
   
-
-  p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
-    geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
+  ## Include cell ID in the ggplot object 
+  if (cell.id) {
+    p <- ggplot(data = data.plot, mapping = aes(x = x, y = y, key = cell.ident)) +
+      geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
+    } else {
+    p <- ggplot(data = data.plot, mapping = aes(x = x, y = y)) +
+      geom_point(mapping = aes(colour = factor(x = ident), size = pt.size))
+    }
   
-
     if (!is.null(x = pt.shape)) {
     shape.val <- FetchData(object = object, vars.all = pt.shape)[cells.use, 1]
     if (is.numeric(shape.val)) {
