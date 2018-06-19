@@ -2622,7 +2622,7 @@ DimPlot <- function(
       dplyr::group_by(ident) %>%
       summarize(x = median(x = x), y = median(x = y)) -> centers
     p3 <- p3 +
-      geom_point(data = centers, mapping = aes(x = x, y = y, key = cell.ident), size = 0, alpha = 0) +
+      geom_point(data = centers, mapping = aes(x = x, y = y ), size = 0, alpha = 0) +
       geom_text(data = centers, mapping = aes(label = ident), size = label.size)
   }
   
